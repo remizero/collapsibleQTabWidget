@@ -1,40 +1,34 @@
 #include "CollapsibleTabWidgetCornerActionsContainer.h"
-
-// Librerías Internas
-#include "CollapsibleTabWidget.h"
-
-#include <QDebug>
+#include <QDebug> // FOR DEBUGGING MESSAGES
 
 CollapsibleTabWidgetCornerActionsContainer::CollapsibleTabWidgetCornerActionsContainer ( QWidget *parent ) : QWidget ( parent ) {
 
   this->setContentsMargins ( 0, 0, 0, 0 );
-  //this->setStyleSheet ( "background-color: black");
-  //this->setMinimumHeight ( 16 );
   this->setSizePolicy ( QSizePolicy::Maximum, QSizePolicy::Maximum );
 
-  this->showHideStripeMenuBtn = new QToolButton ( this );
-  this->showHideStripeMenuBtn->setObjectName ( "showHideRibbonMenuBtn" );
-  this->showHideStripeMenuBtn->setSizePolicy ( QSizePolicy::Maximum, QSizePolicy::Maximum );
-  this->showHideStripeMenuBtn->setStyleSheet ( "QToolButton {border: none;}" );
-  this->showHideStripeMenuBtn->setToolButtonStyle ( Qt::ToolButtonIconOnly );
-  this->showHideStripeMenuBtn->setArrowType ( Qt::ArrowType::DownArrow );
-  this->showHideStripeMenuBtn->setToolTip ( "Collapse" );
-  this->showHideStripeMenuBtn->setToolTipDuration ( 5000 );
-  this->showHideStripeMenuBtn->setCheckable ( true );
-  this->showHideStripeMenuBtn->setChecked ( false );
-  this->showHideStripeMenuBtn->setMinimumSize ( 16, 16 );
+  this->showHideTabWidgetBtn = new QToolButton ( this );
+  this->showHideTabWidgetBtn->setObjectName ( "showHideTabWidgetBtn" );
+  this->showHideTabWidgetBtn->setSizePolicy ( QSizePolicy::Maximum, QSizePolicy::Maximum );
+  this->showHideTabWidgetBtn->setStyleSheet ( "QToolButton {border: none;}" );
+  this->showHideTabWidgetBtn->setToolButtonStyle ( Qt::ToolButtonIconOnly );
+  this->showHideTabWidgetBtn->setArrowType ( Qt::ArrowType::DownArrow );
+  this->showHideTabWidgetBtn->setToolTip ( "Collapse" );
+  this->showHideTabWidgetBtn->setToolTipDuration ( 5000 );
+  this->showHideTabWidgetBtn->setCheckable ( true );
+  this->showHideTabWidgetBtn->setChecked ( false );
+  this->showHideTabWidgetBtn->setMinimumSize ( 16, 16 );
 
   this->mainLayout = new QHBoxLayout ( this );
   this->mainLayout->setContentsMargins ( 3, 0, 3, 0 );
-  this->mainLayout->addWidget ( this->showHideStripeMenuBtn );
+  this->mainLayout->addWidget ( this->showHideTabWidgetBtn );
   this->setLayout ( this->mainLayout );
-  connect ( this->showHideStripeMenuBtn, SIGNAL ( toggled ( bool ) ), this, SLOT ( toggleShowHideStripeMenuBtn ( bool ) ) );
+  connect ( this->showHideTabWidgetBtn, SIGNAL ( toggled ( bool ) ), this, SLOT ( toggleShowHideTabWidgetBtn ( bool ) ) );
 }
 
-void CollapsibleTabWidgetCornerActionsContainer::toggleShowHideStripeMenuBtn ( bool checked ) {
+void CollapsibleTabWidgetCornerActionsContainer::toggleShowHideTabWidgetBtn ( bool checked ) {
 
-  this->showHideStripeMenuBtn->setArrowType ( checked ? Qt::ArrowType::LeftArrow : Qt::ArrowType::DownArrow );
-  this->showHideStripeMenuBtn->setToolTip ( checked ? "Uncollapse" : "Collapse" );
+  this->showHideTabWidgetBtn->setArrowType ( checked ? Qt::ArrowType::LeftArrow : Qt::ArrowType::DownArrow );
+  this->showHideTabWidgetBtn->setToolTip ( checked ? "Uncollapse" : "Collapse" );
 
   ( ( CollapsibleTabWidget * ) this->parent () )->setClosedTabWidget ( checked ? true : false );
   ( ( CollapsibleTabWidget * ) this->parent () )->setOpenTabWidget ( checked ? false : true );

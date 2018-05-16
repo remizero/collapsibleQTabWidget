@@ -1,6 +1,9 @@
 #ifndef COLLAPSIBLETABWIDGETCORNERACTIONSCONTAINER_H
 #define COLLAPSIBLETABWIDGETCORNERACTIONSCONTAINER_H
 
+// Librerias Internas
+#include "CollapsibleTabWidget.h"
+
 // Librerías Qt
 #include <QAbstractAnimation>
 #include <QAction>
@@ -10,8 +13,6 @@
 #include <QToolButton>
 #include <QWidget>
 
-//class CollapsibleTabWidget;
-
 class CollapsibleTabWidgetCornerActionsContainer : public QWidget {
 
     Q_OBJECT
@@ -20,10 +21,10 @@ class CollapsibleTabWidgetCornerActionsContainer : public QWidget {
     explicit CollapsibleTabWidgetCornerActionsContainer ( QWidget *parent = 0 );
 
   public slots:
-    void toggleShowHideStripeMenuBtn ( bool checked );
+    void toggleShowHideTabWidgetBtn ( bool checked );
 
   private:
-    QToolButton *showHideStripeMenuBtn;
+    QToolButton *showHideTabWidgetBtn;
     QHBoxLayout *mainLayout;
 };
 

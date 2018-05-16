@@ -1,8 +1,4 @@
 #include "CollapsibleTabWidget.h"
-
-
-#include <QToolButton>
-#include <QWidgetAction>
 #include <QDebug>
 
 CollapsibleTabWidget::CollapsibleTabWidget ( QWidget *parent ) : QTabWidget ( parent ) {
@@ -21,7 +17,7 @@ CollapsibleTabWidget::CollapsibleTabWidget ( QWidget *parent ) : QTabWidget ( pa
   this->previousIndex = 0;
   this->setCurrentIndex ( 0 );
 
-  // let the entire widget grow and shrink with its content
+  // allows the entire widget to expand or contract with its content
   this->toggleAnimation = new QParallelAnimationGroup ( this );
   this->toggleAnimation->addAnimation ( new QPropertyAnimation ( this, "minimumHeight" ) );
   this->toggleAnimation->addAnimation ( new QPropertyAnimation ( this, "maximumHeight" ) );
@@ -92,12 +88,13 @@ void CollapsibleTabWidget::setAnimation () {
 
     QPropertyAnimation* SectionAnimation = static_cast<QPropertyAnimation *> ( toggleAnimation->animationAt ( i ) );
     SectionAnimation->setDuration ( 300 );
-    #ifdef Q_OS_WIN
+    SectionAnimation->setStartValue ( this->maximumHeight () );
+    /*#ifdef Q_OS_WIN
       SectionAnimation->setStartValue ( 110 );
     #endif
     #ifdef Q_OS_LINUX
       SectionAnimation->setStartValue ( 120 );
-    #endif
+    #endif*/
     SectionAnimation->setEndValue ( 0 );
   }
   QPropertyAnimation* contentAnimation = static_cast<QPropertyAnimation *> ( toggleAnimation->animationAt ( toggleAnimation->animationCount () - 1 ) );
