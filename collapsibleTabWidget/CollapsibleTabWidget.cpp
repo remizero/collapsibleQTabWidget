@@ -56,6 +56,7 @@ void CollapsibleTabWidget::leaveEvent ( QEvent *event ) {
 
 void CollapsibleTabWidget::launchAnimation () {
 
+  qDebug () << this->sizeHint ();
   if ( this->lockedTabWidget ) {
 
     if ( this->currentIndex () != this->previousIndex ) {
