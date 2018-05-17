@@ -30,9 +30,13 @@ void CollapsibleTabWidgetCornerActionsContainer::toggleShowHideTabWidgetBtn ( bo
   this->showHideTabWidgetBtn->setArrowType ( checked ? Qt::ArrowType::LeftArrow : Qt::ArrowType::DownArrow );
   this->showHideTabWidgetBtn->setToolTip ( checked ? "Uncollapse" : "Collapse" );
 
-  ( ( CollapsibleTabWidget * ) this->parent () )->setClosedTabWidget ( checked ? true : false );
-  ( ( CollapsibleTabWidget * ) this->parent () )->setOpenTabWidget ( checked ? false : true );
+  //qDebug () << ( ( CollapsibleTabWidget * ) this->parent () )->getOpenTabWidget ();
+  //if ( ( ( ( CollapsibleTabWidget * ) this->parent () )->getOpenTabWidget () ) && !( ( ( CollapsibleTabWidget * ) this->parent () )->getLockedTabWidget () ) ) {
 
-  ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ()->setDirection ( checked ? QAbstractAnimation::Forward : QAbstractAnimation::Backward );
-  ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ()->start ();
+    ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ()->setDirection ( checked ? QAbstractAnimation::Forward : QAbstractAnimation::Backward );
+    ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ()->start ();
+  //}
+
+  ( ( CollapsibleTabWidget * ) this->parent () )->setLockedTabWidget ( checked );
+  ( ( CollapsibleTabWidget * ) this->parent () )->setOpenTabWidget ( !checked );
 }

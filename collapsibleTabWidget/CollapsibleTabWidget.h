@@ -11,11 +11,13 @@
 #include <QHBoxLayout>
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
+#include <QResizeEvent>
 #include <QShowEvent>
 #include <QSizePolicy>
 #include <QString>
 #include <QTabBar>
 #include <QTabWidget>
+#include <QTimerEvent>
 #include <QWidget>
 
 class CollapsibleTabWidgetCornerActionsContainer;
@@ -29,14 +31,18 @@ class COLLAPSIBLETABWIDGETSHARED_EXPORT CollapsibleTabWidget : public QTabWidget
 
     bool getLockedTabWidget () const;
     bool getOpenTabWidget () const;
+    int getPreviousHeight () const;
     QParallelAnimationGroup *getToggleAnimation () const;
     void leaveEvent ( QEvent *event ) Q_DECL_OVERRIDE;
     void setAnimation ();
-    void setClosedTabWidget ( bool value );
+    void setLockedTabWidget ( bool value );
     void setOpenTabWidget ( bool value );
+    void setPreviousHeight ( int value );
+    void timerEvent ( QTimerEvent *timerEvent ) Q_DECL_OVERRIDE;
 
   protected:
     void showEvent ( QShowEvent *event ) Q_DECL_OVERRIDE;
+    void resizeEvent ( QResizeEvent *event ) Q_DECL_OVERRIDE;
 
   public slots:
     void launchAnimation ();
@@ -47,6 +53,8 @@ class COLLAPSIBLETABWIDGETSHARED_EXPORT CollapsibleTabWidget : public QTabWidget
     bool lockedTabWidget = false;
     bool openTabWidget = true;
     int previousIndex;
+    int previousHeight;
+    int timerId;
 };
 
 #endif // COLLAPSIBLETABWIDGET_H
