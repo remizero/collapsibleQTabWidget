@@ -11,6 +11,7 @@
 #include <QHBoxLayout>
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
+#include <QShowEvent>
 #include <QSizePolicy>
 #include <QString>
 #include <QTabBar>
@@ -33,6 +34,9 @@ class COLLAPSIBLETABWIDGETSHARED_EXPORT CollapsibleTabWidget : public QTabWidget
     void setAnimation ();
     void setClosedTabWidget ( bool value );
     void setOpenTabWidget ( bool value );
+
+  protected:
+    void showEvent ( QShowEvent *event ) Q_DECL_OVERRIDE;
 
   public slots:
     void launchAnimation ();

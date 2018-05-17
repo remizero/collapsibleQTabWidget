@@ -2,7 +2,7 @@
 
 MainWindow::MainWindow ( QWidget *parent ) : QMainWindow ( parent ) {
 
-  this->resize ( 400, 130 );
+  this->resize ( 400, 250 );
   CollapsibleTabWidget *collapsibleTabWidget = new CollapsibleTabWidget ( this );
 
   collapsibleTabWidget->addTab ( new QWidget ( this ), "Tab 1" );
