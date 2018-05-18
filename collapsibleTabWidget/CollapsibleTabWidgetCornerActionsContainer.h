@@ -10,6 +10,7 @@
 #include <QHBoxLayout>
 #include <QMainWindow>
 #include <QPropertyAnimation>
+#include <QTabWidget>
 #include <QToolButton>
 #include <QWidget>
 
@@ -19,6 +20,7 @@ class CollapsibleTabWidgetCornerActionsContainer : public QWidget {
 
   public:
     explicit CollapsibleTabWidgetCornerActionsContainer ( QWidget *parent = 0 );
+    void updateArrowType ();
 
   public slots:
     void toggleShowHideTabWidgetBtn ( bool checked );

@@ -35,9 +35,11 @@ class COLLAPSIBLETABWIDGETSHARED_EXPORT CollapsibleTabWidget : public QTabWidget
     QParallelAnimationGroup *getToggleAnimation () const;
     void leaveEvent ( QEvent *event ) Q_DECL_OVERRIDE;
     void setAnimation ();
+    void setCornerWidget ( QWidget *widget, Qt::Corner corner = Qt::TopRightCorner );
     void setLockedTabWidget ( bool value );
     void setOpenTabWidget ( bool value );
     void setPreviousHeight ( int value );
+    void setTabPosition ( QTabWidget::TabPosition tabPosition );
     void timerEvent ( QTimerEvent *timerEvent ) Q_DECL_OVERRIDE;
 
   protected:

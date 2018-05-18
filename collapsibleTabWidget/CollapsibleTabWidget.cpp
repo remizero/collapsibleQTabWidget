@@ -74,7 +74,6 @@ void CollapsibleTabWidget::launchAnimation () {
       this->previousIndex = this->currentIndex ();
     }
   }
-  //qDebug () << this->openTabWidget;
 }
 
 int CollapsibleTabWidget::getPreviousHeight () const {
@@ -85,6 +84,11 @@ int CollapsibleTabWidget::getPreviousHeight () const {
 void CollapsibleTabWidget::setPreviousHeight ( int value ) {
 
   this->previousHeight = value;
+}
+
+void CollapsibleTabWidget::setTabPosition ( QTabWidget::TabPosition tabPosition ) {
+
+  QTabWidget::setTabPosition ( tabPosition );
 }
 
 void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
@@ -126,24 +130,18 @@ void CollapsibleTabWidget::setAnimation () {
     QPropertyAnimation *SectionAnimation = static_cast<QPropertyAnimation *> ( toggleAnimation->animationAt ( i ) );
     SectionAnimation->setDuration ( 300 );
     SectionAnimation->setStartValue ( this->previousHeight );
-    /*#ifdef Q_OS_WIN
-      SectionAnimation->setStartValue ( this->geometry ().height () );
-    #endif
-    #ifdef Q_OS_LINUX
-      SectionAnimation->setStartValue ( this->geometry ().height () );
-    #endif*/
     SectionAnimation->setEndValue ( 0 );
   }
   QPropertyAnimation* contentAnimation = static_cast<QPropertyAnimation *> ( toggleAnimation->animationAt ( toggleAnimation->animationCount () - 1 ) );
   contentAnimation->setDuration ( 300 );
   contentAnimation->setStartValue ( 0 );
-  /*#ifdef Q_OS_WIN
-    contentAnimation->setEndValue ( this->tabBar ()->height () );
-  #endif
-  #ifdef Q_OS_LINUX
-    contentAnimation->setEndValue ( this->tabBar ()->height () );
-  #endif*/
   contentAnimation->setEndValue ( this->tabBar ()->height () );
+}
+
+void CollapsibleTabWidget::setCornerWidget ( QWidget *widget, Qt::Corner corner ) {
+
+  QTabWidget::setCornerWidget ( widget, corner );
+  ( ( CollapsibleTabWidgetCornerActionsContainer * ) widget )->updateArrowType ();
 }
 
 void CollapsibleTabWidget::setLockedTabWidget ( bool value ) {
