@@ -89,6 +89,7 @@ void CollapsibleTabWidget::setPreviousHeight ( int value ) {
 void CollapsibleTabWidget::setTabPosition ( QTabWidget::TabPosition tabPosition ) {
 
   QTabWidget::setTabPosition ( tabPosition );
+  this->cornerActionsContainer->updateArrowType ();
 }
 
 void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {

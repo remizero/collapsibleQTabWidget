@@ -11,5 +11,7 @@ MainWindow::MainWindow ( QWidget *parent ) : QMainWindow ( parent ) {
   collapsibleTabWidget->addTab ( new QWidget ( this ), "Tab 3" );
   collapsibleTabWidget->addTab ( new QWidget ( this ), "Tab 4" );
 
+  collapsibleTabWidget->setTabPosition ( QTabWidget::South );
+
   this->setCentralWidget ( collapsibleTabWidget );
 }
