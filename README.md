@@ -12,3 +12,8 @@ Solo funciona correctamente con TabPosition::North, para TabPosition::South el c
 - [ ] Adaptar el código a qt-plugin-system (Adapt the code to qt-plugin-system).
 - [ ] Hacer de forma transparente, que al colapsar el QTabWidget se redimensione su contenedor padre (Make it transparent, so that when the QTabWidget collapses its parent container is resized). Al colapsar el QTabWidget, permitir se redimensione el contenedor padre no está implementado aun (When the QTabWidget collapses, allowing the parent container to be resized is not implemented yet).
 - [ ] Documentar el código (Document the code).
+- [x] Ajustar el comportamiento/animación del botón de la esquina de acuerdo a la posición Izquierda/Derecha ( Adjust the behavior / animation of the corner button according to the Left / Right position ).
+- [x] Ajustar el comportamiento/animación del botón de la esquina de acuerdo a la posición de las pestañas Norte/Sur ( Adjust the behavior / animation of the corner button according to the position of the North / South tabs. ).
+- [ ] Permitir arrastrar y soltar pestañas y convertirlas en una ventana flotante ( Allow drag and drop tabs and turn them into a floating window ).
+- [ ] Permitir convertir pestañas y convertirlas en una ventana flotante la hacer docle click, este punto excluye al punto siguiente ( Allow to convert tabs and turn them into a floating window do click click, this point excludes the next point ).
+- [ ] Permitir colapsar/descolapsar las pestañas al hacer doble click, este punto excluye al punto anterior ( Allow collapsing/uncollapsing the tabs by double clicking, this point excludes the previous point ).
