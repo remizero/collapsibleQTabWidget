@@ -9,6 +9,7 @@
 #include <QAction>
 #include <QHBoxLayout>
 #include <QMainWindow>
+#include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
 #include <QTabWidget>
 #include <QToolButton>

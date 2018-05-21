@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 #include <QDebug>
+#include <QSplitter>
+#include <QTextEdit>
 
 MainWindow::MainWindow ( QWidget *parent ) : QMainWindow ( parent ) {
 
@@ -11,7 +13,13 @@ MainWindow::MainWindow ( QWidget *parent ) : QMainWindow ( parent ) {
   collapsibleTabWidget->addTab ( new QWidget ( this ), "Tab 3" );
   collapsibleTabWidget->addTab ( new QWidget ( this ), "Tab 4" );
 
-  collapsibleTabWidget->setTabPosition ( QTabWidget::South );
+  collapsibleTabWidget->setTabPosition ( QTabWidget::North );
+  //collapsibleTabWidget->setTabPosition ( QTabWidget::West );
 
-  this->setCentralWidget ( collapsibleTabWidget );
+  QSplitter *splitter = new QSplitter ( this );
+  splitter->setOrientation ( Qt::Vertical );
+  splitter->addWidget ( collapsibleTabWidget );
+  splitter->addWidget ( new QTextEdit ( this ) );
+
+  this->setCentralWidget ( splitter );
 }

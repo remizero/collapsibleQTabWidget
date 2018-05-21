@@ -80,8 +80,9 @@ void CollapsibleTabWidgetCornerActionsContainer::toggleShowHideTabWidgetBtn ( bo
   //qDebug () << ( ( CollapsibleTabWidget * ) this->parent () )->getOpenTabWidget ();
   //if ( ( ( ( CollapsibleTabWidget * ) this->parent () )->getOpenTabWidget () ) && !( ( ( CollapsibleTabWidget * ) this->parent () )->getLockedTabWidget () ) ) {
 
-    ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ()->setDirection ( checked ? QAbstractAnimation::Forward : QAbstractAnimation::Backward );
-    ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ()->start ();
+  QParallelAnimationGroup *toggleAnimation = ( ( CollapsibleTabWidget * ) this->parent () )->getToggleAnimation ();
+  toggleAnimation->setDirection ( checked ? QAbstractAnimation::Forward : QAbstractAnimation::Backward );
+  toggleAnimation->start ();
   //}
 
   ( ( CollapsibleTabWidget * ) this->parent () )->setLockedTabWidget ( checked );

@@ -43,7 +43,6 @@ class COLLAPSIBLETABWIDGETSHARED_EXPORT CollapsibleTabWidget : public QTabWidget
     void timerEvent ( QTimerEvent *timerEvent ) Q_DECL_OVERRIDE;
 
   protected:
-    void showEvent ( QShowEvent *event ) Q_DECL_OVERRIDE;
     void resizeEvent ( QResizeEvent *event ) Q_DECL_OVERRIDE;
 
   public slots:
