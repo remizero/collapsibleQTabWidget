@@ -5,6 +5,14 @@ CollapsibleTabWidget::CollapsibleTabWidget ( QWidget *parent ) : QTabWidget ( pa
 
   // TODO: Por si desaparece el cornerWidget
   // https://stackoverflow.com/questions/18144626/qtabwidget-corner-qtoolbutton-widget-disappearing
+  // http://www.qtcentre.org/threads/12539-QTabWidget-corner-widget-is-not-shown
+  // http://doc.qt.io/qt-5/qstyle.html#subElementRect
+  // http://doc.qt.io/qt-5/qstyle.html#SubElement-enum
+  // http://doc.qt.io/qt-5/qstyleoption.html
+  // http://doc.qt.io/qt-5/style-reference.html
+  //
+  // https://code.woboq.org/qt5/qtbase/src/widgets/widgets/qtabwidget.cpp.html
+  // https://code.woboq.org/qt5/qtbase/src/widgets/widgets/qtabwidget.h.html
   this->timerId = 0;
   this->setMinimumHeight ( 0 );
   this->setSizePolicy ( QSizePolicy::Expanding, QSizePolicy::Expanding );
