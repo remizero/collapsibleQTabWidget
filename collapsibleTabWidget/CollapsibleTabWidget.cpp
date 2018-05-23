@@ -104,15 +104,77 @@ void CollapsibleTabWidget::setTabPosition ( QTabWidget::TabPosition tabPosition 
 
 void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
-  qDebug () << "Entró por la línea 99";
+  qDebug () << "Entró por la línea 107";
+  qDebug () << "this->lockedTabWidget ------------------------------------------" << this->lockedTabWidget;
   if ( !this->lockedTabWidget ) {
 
     switch ( this->tabPosition () ) {
 
       case QTabWidget::North:
 
-        qDebug () << "entró por el norte";
+        qDebug () << "entró por el norte línea 114";
         this->previousHeight = this->geometry ().height ();
+        QThread::msleep ( 5000 );
+        if ( this->toggleAnimation->state () == QAbstractAnimation::Stopped ) {
+
+          qDebug () << "La animación está detenida";
+
+        } else {
+
+          qDebug () << "La animación no está detenida";
+        }
+        /**
+         * entró por el norte línea 114
+         * this->previousHeight 149
+         * Aquí se detiene y pasa a hacer lo siguiente
+         * Entró por la línea 208
+         * this->previousHeight 149
+         * Entró por la línea 107
+         * entró por el norte línea 114
+         * this->previousHeight 252
+         *
+         *
+         *
+         * entró por el norte línea 114
+         * Aquí se detiene y pasa a hacer lo siguiente
+         * this->previousHeight 103
+         * Entró por la línea 208
+         * this->previousHeight 103
+         * Entró por la línea 107
+         * entró por el norte línea 114
+         * this->previousHeight 188
+         *
+         *
+         *
+         *
+         * Entró por la línea 107
+         * this->lockedTabWidget ------------------------------------------ false
+         * entró por el norte línea 114
+         * Aquí se detiene y pasa a hacer lo siguiente
+         * this->previousHeight 89
+         * Entró por la línea 208
+         * this->previousHeight 89
+         * Entró por la línea 107
+         * this->lockedTabWidget ------------------------------------------ false
+         * entró por el norte línea 114
+         * this->previousHeight 157
+         *
+         *
+         *
+         *
+         * Entró por la línea 107
+         * this->lockedTabWidget ------------------------------------------ false
+         * entró por el norte línea 114
+         * La animación está detenida
+         * this->previousHeight 117
+         * Entró por la línea 208
+         * this->previousHeight 117
+         * Entró por la línea 107
+         * this->lockedTabWidget ------------------------------------------ false
+         * entró por el norte línea 114
+         * La animación está detenida
+         * this->previousHeight 163
+         */
         this->setAnimation ();
         this->setMinimumHeight ( 0 );
         this->setMaximumHeight ( 16777215 );
@@ -120,7 +182,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::South:
 
-        qDebug () << "entró por el sur";
+        qDebug () << "entró por el sur línea 123";
         this->previousHeight = this->geometry ().height ();
         this->setAnimation ();
         this->setMinimumHeight ( 0 );
@@ -129,7 +191,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::East:
 
-        qDebug () << "entró por el este";
+        qDebug () << "entró por el este línea 132";
         this->previousHeight = this->geometry ().width ();
         this->setAnimation ();
         this->setMinimumWidth ( 0 );
@@ -138,7 +200,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::West:
 
-        qDebug () << "entró por el oeste";
+        qDebug () << "entró por el oeste línea 141";
         this->previousHeight = this->geometry ().width ();
         this->setAnimation ();
         this->setMinimumWidth ( 0 );
@@ -154,7 +216,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::North:
 
-        qDebug () << "entró por el norte";
+        qDebug () << "entró por el norte línea 157";
         if ( this->maximumHeight () != this->parentWidget ()->geometry ().height () ) {
 
           this->setAnimation ();
@@ -163,7 +225,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::South:
 
-        qDebug () << "entró por el sur";
+        qDebug () << "entró por el sur línea 166";
         if ( this->maximumHeight () != this->parentWidget ()->geometry ().height () ) {
 
           this->setAnimation ();
@@ -172,7 +234,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::East:
 
-        qDebug () << "entró por el este";
+        qDebug () << "entró por el este línea 175";
         if ( this->maximumWidth () != this->parentWidget ()->geometry ().width () ) {
 
           this->setAnimation ();
@@ -181,7 +243,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       case QTabWidget::West:
 
-        qDebug () << "entró por el oeste";
+        qDebug () << "entró por el oeste línea 184";
         if ( this->maximumWidth () != this->parentWidget ()->geometry ().width () ) {
 
           this->setAnimation ();
@@ -190,6 +252,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
       default:
 
+        qDebug () << "entró por la línea 184";
         if ( this->maximumHeight () != this->parentWidget ()->geometry ().height () ) {
 
           this->setAnimation ();
@@ -204,7 +267,7 @@ void CollapsibleTabWidget::timerEvent ( QTimerEvent *timerEvent ) {
 
 void CollapsibleTabWidget::resizeEvent ( QResizeEvent *event ) {
 
-  qDebug () << "Entró por la línea 121";
+  qDebug () << "Entró por la línea 208";
   if ( this->timerId ) {
 
     this->killTimer ( this->timerId );

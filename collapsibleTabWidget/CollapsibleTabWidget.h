@@ -17,6 +17,7 @@
 #include <QString>
 #include <QTabBar>
 #include <QTabWidget>
+#include <QThread>
 #include <QTimerEvent>
 #include <QWidget>
 
